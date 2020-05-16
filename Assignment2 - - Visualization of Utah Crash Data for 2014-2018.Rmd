@@ -53,7 +53,7 @@ c$Timesplit <- if_else(c$Time1 %in% q1,'Hours 00-05',ifelse(c$Time1 %in% q2,'Hou
 month_list <- c('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec')
 ```
 
-## Visualization 1
+## Visualization 1 - Trying to identify Wild Animal related accidents Monthly across time periods
 
 ```{r fig.width = 10}
 bbbb <- c %>% group_by(WILD_ANIMAL_RELATED,Month,Timesplit) %>% summarise(n=n()) %>% filter(WILD_ANIMAL_RELATED=='Y')
@@ -72,7 +72,7 @@ ggplot(bbbb) +
 #The time of the day between Hours 18-23 has the highest number of Wild Animal related accidents across all months which is significant. Another thing that I noted in the plot is that excepting for Hours 00-05, the highest number of Wild Animals Related Accidents seem to happen in month of November over the period of last 5 years. All of this is interesting and it might make sense to further drill this down to see which routes if any in particular where these are high and what measures need to be taken to avoid this.
 
 
-## Visualization 2
+## Visualization 2 - Trying to identify Intersection Related Accidents by Routes with Highest # of such Incidents
 ```{r fig.height=7,fig.width=8}
 cccc <- c %>% group_by(INTERSECTION_RELATED,Year,ROUTE) %>% summarise(n=n()) %>% filter(INTERSECTION_RELATED=='Y' & n>=100 & Year != 2018)
 
